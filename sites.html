@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeUp | Resource Links</title>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap");
+
+        :root {
+            --bg-base: #000000;
+            --bg-panel: #050505;
+            --bg-surface: #0f0f0f;
+            --bg-surface-hover: #141414;
+            --text-primary: #f0f0f0;
+            --text-secondary: #a1a1aa;
+            --text-muted: #52525b;
+            --border-subtle: #1f1f22;
+            --border-focus: #27272a;
+            --accent-blue: #00f0ff;
+            --accent-pink: #ff00ff;
+            --accent-green: #39ff14;
+            --accent-amber: #ffdf00;
+            --glow-blue: 0 0 14px rgba(0, 240, 255, 0.38);
+            --glow-pink: 0 0 14px rgba(255, 0, 255, 0.38);
+            --font-sans: "Syne", "Inter", sans-serif;
+            --font-mono: "DM Mono", "JetBrains Mono", monospace;
+            --space-1: 4px;
+            --space-2: 8px;
+            --space-3: 12px;
+            --space-4: 16px;
+            --space-5: 24px;
+            --space-6: 32px;
+            --space-8: 48px;
+            --radius-sm: 4px;
+            --radius-md: 6px;
+            --radius-lg: 8px;
+            --transition: 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                linear-gradient(180deg, rgba(0, 240, 255, 0.04), transparent 22%),
+                var(--bg-base);
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 14px;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+            background-size: 32px 32px;
+            mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 78%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible {
+            outline: 2px solid var(--accent-blue);
+            outline-offset: 3px;
+        }
+
+        .top-bar {
+            height: 48px;
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 var(--space-5);
+            background-color: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(10px);
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .top-bar-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .top-bar-status i {
+            color: var(--accent-blue);
+            text-shadow: var(--glow-blue);
+            font-size: 8px;
+        }
+
+        .page-shell {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: var(--space-8) var(--space-6);
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: var(--space-5);
+            margin-bottom: var(--space-8);
+        }
+
+        .page-title-block {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+            min-width: 0;
+        }
+
+        .page-kicker {
+            color: var(--text-secondary);
+            font-size: 12px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .page-title {
+            font-family: var(--font-sans);
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            line-height: 1.2;
+            text-transform: uppercase;
+            text-shadow: var(--glow-blue);
+        }
+
+        .page-subtitle {
+            max-width: 78ch;
+            color: var(--text-secondary);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            cursor: pointer;
+            background-color: transparent;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            transition: all var(--transition);
+            white-space: nowrap;
+        }
+
+        .btn:hover,
+        .btn.active {
+            background: rgba(0, 240, 255, 0.05);
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+            box-shadow: var(--glow-blue);
+        }
+
+        .btn-primary {
+            background: var(--accent-blue);
+            color: #000000;
+            border-color: var(--accent-blue);
+            box-shadow: var(--glow-blue);
+        }
+
+        .btn-primary:hover {
+            color: #000000;
+            background: #4dffff;
+            border-color: #4dffff;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: var(--space-6);
+            padding-bottom: var(--space-6);
+            border-bottom: 1px solid var(--border-subtle);
+            margin-bottom: var(--space-8);
+        }
+
+        .metric-card {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 12px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .metric-value {
+            font-family: "Bebas Neue", var(--font-sans);
+            font-size: 46px;
+            font-weight: 400;
+            line-height: 0.95;
+            color: var(--accent-blue);
+            text-shadow: var(--glow-blue);
+        }
+
+        .metric-note {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .life-workspace {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: var(--space-8);
+            align-items: start;
+        }
+
+        .life-nav-card {
+            border-right: 1px solid var(--border-subtle);
+            padding-right: var(--space-4);
+            position: sticky;
+            top: 84px;
+        }
+
+        .life-nav-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-1);
+        }
+
+        .life-nav-item {
+            position: relative;
+            border: 0;
+            border-radius: var(--radius-sm);
+            padding: 10px 12px 10px 28px;
+            background: transparent;
+            color: var(--text-secondary);
+            text-align: left;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            transition: all var(--transition);
+            cursor: pointer;
+        }
+
+        .life-nav-item::before {
+            content: "\2192";
+            position: absolute;
+            left: 8px;
+            color: var(--accent-blue);
+            opacity: 0.65;
+            transition: all var(--transition);
+        }
+
+        .life-nav-item:hover,
+        .life-nav-item.active {
+            background: rgba(0, 240, 255, 0.05);
+            color: var(--accent-blue);
+        }
+
+        .life-nav-item:hover::before,
+        .life-nav-item.active::before {
+            left: 12px;
+            color: var(--accent-pink);
+            opacity: 1;
+            text-shadow: var(--glow-pink);
+        }
+
+        .life-nav-meta {
+            margin-top: var(--space-5);
+            padding-top: var(--space-4);
+            border-top: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        .panel-stack {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-8);
+        }
+
+        .life-content-panel {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+
+        .life-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: var(--space-4);
+        }
+
+        .life-section-title {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-family: var(--font-sans);
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .life-section-title i {
+            color: var(--accent-blue);
+        }
+
+        .life-section-copy {
+            color: var(--text-secondary);
+            max-width: 78ch;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 2px 6px;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) repeat(3, minmax(160px, 1fr));
+            gap: var(--space-4);
+            padding-top: var(--space-4);
+            padding-bottom: var(--space-4);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+
+        .form-label {
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 12px;
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 14px;
+            min-height: 42px;
+            transition: border-color var(--transition), box-shadow var(--transition), background-color var(--transition);
+        }
+
+        .form-control:hover {
+            background-color: var(--bg-surface-hover);
+            border-color: var(--border-focus);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: var(--glow-blue);
+        }
+
+        select.form-control {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            cursor: pointer;
+            padding-right: 36px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23f0f0f0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+        }
+
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--space-3);
+            flex-wrap: wrap;
+        }
+
+        .toolbar-note {
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        .life-list-container {
+            border-top: 1px solid var(--border-subtle);
+            padding-top: var(--space-3);
+        }
+
+        .life-list-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--space-3);
+            padding-bottom: var(--space-2);
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: var(--space-4);
+            padding-top: var(--space-3);
+        }
+
+        .resource-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+            padding: 10px 12px 10px 28px;
+            border-radius: var(--radius-sm);
+            min-width: 0;
+            transition: all var(--transition);
+        }
+
+        .resource-card::before {
+            content: "\2192";
+            position: absolute;
+            left: 8px;
+            top: 10px;
+            color: var(--accent-blue);
+            font-weight: 700;
+            opacity: 0.7;
+            transition: all var(--transition);
+        }
+
+        .resource-card:hover {
+            background: rgba(0, 240, 255, 0.05);
+        }
+
+        .resource-card:hover::before {
+            left: 12px;
+            color: var(--accent-pink);
+            opacity: 1;
+            text-shadow: var(--glow-pink);
+        }
+
+        .resource-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: var(--space-3);
+        }
+
+        .resource-title {
+            font-family: var(--font-sans);
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .resource-desc {
+            color: var(--text-secondary);
+        }
+
+        .resource-meta,
+        .resource-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .resource-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 8px;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        .resource-pill.highlight {
+            color: var(--accent-amber);
+        }
+
+        .resource-pill.good {
+            color: var(--accent-green);
+        }
+
+        .resource-note {
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        .resource-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            flex-wrap: wrap;
+            margin-top: auto;
+        }
+
+        .resource-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            color: var(--accent-blue);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .resource-link:hover {
+            color: var(--accent-pink);
+        }
+
+        .note-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: var(--space-4);
+            padding-top: var(--space-3);
+        }
+
+        .note-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+            padding: 10px 12px 10px 28px;
+        }
+
+        .note-card::before {
+            content: "\2192";
+            position: absolute;
+            left: 8px;
+            top: 10px;
+            color: var(--accent-blue);
+            opacity: 0.7;
+        }
+
+        .note-title {
+            font-family: var(--font-sans);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .note-copy {
+            color: var(--text-secondary);
+        }
+
+        .empty-state {
+            padding: var(--space-6) 0;
+            color: var(--text-muted);
+        }
+
+        .empty-state h3 {
+            font-family: var(--font-sans);
+            font-size: 16px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: var(--space-2);
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 1200px) {
+            .metric-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .controls-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 900px) {
+            .page-shell {
+                padding: var(--space-5);
+            }
+
+            .page-header,
+            .life-section-header,
+            .toolbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .life-workspace {
+                grid-template-columns: 1fr;
+                gap: var(--space-6);
+            }
+
+            .life-nav-card {
+                position: static;
+                border-right: 0;
+                border-bottom: 1px solid var(--border-subtle);
+                padding-right: 0;
+                padding-bottom: var(--space-3);
+            }
+
+            .life-nav-list {
+                flex-direction: row;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .top-bar {
+                padding: 0 var(--space-3);
+            }
+
+            .metric-grid,
+            .controls-grid,
+            .resource-grid,
+            .note-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-title {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-bar-status">
+            <i class="ph-fill ph-circle"></i>
+            <span>LifeUp External Resource Node</span>
+        </div>
+        <div id="os-clock">00:00:00</div>
+    </div>
+
+    <main class="page-shell">
+        <header class="page-header">
+            <div class="page-title-block">
+                <span class="page-kicker">Linked Resource Page</span>
+                <h1 class="page-title">Project Resources</h1>
+                <p class="page-subtitle">
+                    A bigger working catalogue of free and free-tier APIs you are realistically likely to reuse
+                    across coursework, dashboards, portfolio builds, experiments, and content-heavy tools.
+                    Search it, sort it, and filter it instead of digging through static links.
+                </p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-primary" id="reset-filters-btn"><i class="ph ph-faders-horizontal"></i> Reset Filters</button>
+                <a class="btn" href="https://github.com/public-apis/public-apis" target="_blank" rel="noreferrer"><i class="ph ph-arrow-square-out"></i> More APIs</a>
+            </div>
+        </header>
+
+        <section class="metric-grid" aria-label="Resource summary">
+            <article class="metric-card">
+                <span class="metric-label">Total APIs</span>
+                <span class="metric-value" id="metric-total">00</span>
+                <span class="metric-note">Curated for common student and personal-project use.</span>
+            </article>
+            <article class="metric-card">
+                <span class="metric-label">Showing</span>
+                <span class="metric-value" id="metric-visible">00</span>
+                <span class="metric-note">Updates live as search, sort, and filters change.</span>
+            </article>
+            <article class="metric-card">
+                <span class="metric-label">No Key</span>
+                <span class="metric-value" id="metric-nokey">00</span>
+                <span class="metric-note">Good starting points when you want zero setup friction.</span>
+            </article>
+            <article class="metric-card">
+                <span class="metric-label">Key Based</span>
+                <span class="metric-value" id="metric-keyed">00</span>
+                <span class="metric-note">Usually worth it when you need richer data or higher limits.</span>
+            </article>
+        </section>
+
+        <div class="life-workspace">
+            <aside class="life-nav-card" aria-label="Resource categories">
+                <div class="life-nav-list" id="category-nav"></div>
+                <div class="life-nav-meta">
+                    Category buttons filter the catalogue. Search then narrows inside the active category.
+                </div>
+            </aside>
+
+            <div class="panel-stack">
+                <section class="life-content-panel">
+                    <div class="life-section-header">
+                        <div>
+                            <h2 class="life-section-title"><i class="ph ph-stack"></i> API Catalogue</h2>
+                            <p class="life-section-copy">
+                                Includes weather, maps, finance, books, media, testing, entertainment,
+                                news, science, and utility APIs. Free status varies, so the cards call out
+                                whether something is fully free, free tier, or development-only.
+                            </p>
+                        </div>
+                        <span class="badge" id="results-badge">0 results</span>
+                    </div>
+
+                    <div class="controls-grid">
+                        <div class="form-group">
+                            <label class="form-label" for="search-input">Search</label>
+                            <input class="form-control" id="search-input" type="search" placeholder="weather, anime, maps, api key, testing, images...">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="sort-select">Sort</label>
+                            <select class="form-control" id="sort-select">
+                                <option value="name">Name A-Z</option>
+                                <option value="category">Category</option>
+                                <option value="open-first">Most Open First</option>
+                                <option value="no-key-first">No Key First</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="auth-filter">Auth</label>
+                            <select class="form-control" id="auth-filter">
+                                <option value="all">All Auth Types</option>
+                                <option value="none">No Key</option>
+                                <option value="optional">Optional Auth</option>
+                                <option value="key">API Key Required</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="pricing-filter">Pricing</label>
+                            <select class="form-control" id="pricing-filter">
+                                <option value="all">All Pricing Types</option>
+                                <option value="free">Free / Open</option>
+                                <option value="free-tier">Free Tier</option>
+                                <option value="dev-free">Development Free</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="toolbar">
+                        <div class="toolbar-note" id="active-filter-note">All categories. Search the full catalogue.</div>
+                        <button class="btn" id="clear-search-btn"><i class="ph ph-eraser"></i> Clear Search</button>
+                    </div>
+
+                    <div class="life-list-container">
+                        <div class="life-list-header">
+                            <span class="page-kicker" id="active-category-label">All Categories</span>
+                            <span class="badge" id="match-count-label">0 matches</span>
+                        </div>
+
+                        <div class="resource-grid" id="resource-grid"></div>
+
+                        <div class="empty-state" id="empty-state" hidden>
+                            <h3>No Matches</h3>
+                            <p>Nothing fits the current filters. Clear the search or loosen auth and pricing filters.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="life-content-panel">
+                    <div class="life-section-header">
+                        <div>
+                            <h2 class="life-section-title"><i class="ph ph-terminal-window"></i> Usage Notes</h2>
+                            <p class="life-section-copy">
+                                The page now does the filtering for you, but these checks still matter before you wire an API into the main site.
+                            </p>
+                        </div>
+                        <span class="badge">Practical checks</span>
+                    </div>
+
+                    <div class="note-grid">
+                        <article class="note-card">
+                            <h3 class="note-title">Watch licensing</h3>
+                            <p class="note-copy">Some APIs are free only for non-commercial, educational, or development use. The cards flag that where it matters.</p>
+                        </article>
+                        <article class="note-card">
+                            <h3 class="note-title">Cache aggressively</h3>
+                            <p class="note-copy">Public free APIs often rate limit. A simple local cache or backend proxy usually saves you fast.</p>
+                        </article>
+                        <article class="note-card">
+                            <h3 class="note-title">Hide keys properly</h3>
+                            <p class="note-copy">If an API needs a key, keep it off the frontend when possible and route requests through your backend.</p>
+                        </article>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const apiCatalog = [
+            {
+                name: "Open-Meteo",
+                category: "Weather",
+                url: "https://open-meteo.com/en/docs",
+                pricingBucket: "free",
+                pricingLabel: "Free",
+                authBucket: "none",
+                authLabel: "No key",
+                description: "Forecasts, air quality, geocoding, marine, climate, and archive endpoints in one JSON API.",
+                bestFor: "dashboards, travel tools, weather widgets",
+                tags: ["forecast", "climate", "air quality", "geocoding"],
+                note: "Free API is aimed at non-commercial use."
+            },
+            {
+                name: "OpenWeather",
+                category: "Weather",
+                url: "https://openweathermap.org/api",
+                pricingBucket: "free-tier",
+                pricingLabel: "Free tier",
+                authBucket: "key",
+                authLabel: "API key",
+                description: "Current weather, 5-day forecast, maps, pollution, and geocoding with a broad developer ecosystem.",
+                bestFor: "production-ish weather builds with familiar docs",
+                tags: ["forecast", "maps", "geocoding", "air pollution"],
+                note: "Free access covers current weather and selected forecast endpoints."
+            },
+            {
+                name: "REST Countries",
+                category: "Maps + Geo",
+                url: "https://restcountries.com/",
+                pricingBucket: "free",
+                pricingLabel: "Free",
+                authBucket: "none",
+                authLabel: "No key",
+                description: "Country names, flags, currencies, capitals, languages, regions, and codes via simple REST endpoints.",
+                bestFor: "country pickers, maps, quizzes, geography widgets",
+                tags: ["countries", "flags", "currencies", "regions"],
+                note: "Open source and free to use."
+            },
+            {
+                name: "Nominatim / OpenStreetMap",
+                category: "Maps + Geo",
+                url: "https://operations.osmfoundation.org/policies/nominatim/",
+                pricingBucket: "free",
+                pricingLabel: "Free",
+                authBucket: "none",
+                authLabel: "No key",
+                description: "Search and reverse geocode OpenStreetMap data without going straight to a paid maps stack.",
+                bestFor: "address search, reverse geocoding, map helpers",
+                tags: ["geocoding", "reverse geocode", "addresses", "maps"],
+                note: "Public instance has a strict usage policy, so cache and stay light."
+            },
+            {
+                name: "IPinfo Lite",
+                category: "Maps + Geo",
+                url: "https://ipinfo.io/developers/lite-api",
+                pricingBucket: "free-tier",
+                pricingLabel: "Free tier",
+                authBucket: "key",
+                authLabel: "API key",
+                description: "Country-level IP geolocation plus basic ASN details for lightweight network-aware features.",
+                bestFor: "country detection, regional defaults, IP lookups",
+                tags: ["ip", "geolocation", "asn", "networking"],
+                note: "Lite plan is the free tier."
+            },
+            {
+                name: "Frankfurter",
+                category: "Finance",
+                url: "https://frankfurter.dev/docs/",
+                pricingBucket: "free",
+                pricingLabel: "Free",
+                authBucket: "none",
+                authLabel: "No key",
+                description: "Exchange rates and currency conversion using central-bank and official institution data.",
+                bestFor: "currency converters, finance widgets, travel tools",
+                tags: ["exchange rates", "currencies", "conversion", "historical"],
+                note: "Simple open-source API with no key friction."
+            },
+            {
+                name: "CoinGecko Demo",
+                category: "Finance",
+                url: "https://docs.coingecko.com/",
+                pricingBucket: "free-tier",
+                pricingLabel: "Free tier",
+                authBucket: "key",
+                authLabel: "API key",
+                description: "Crypto prices, market data, metadata, and historical snapshots across a huge coin catalogue.",
+                bestFor: "crypto trackers, portfolio widgets, market dashboards",
+                tags: ["crypto", "prices", "market cap", "historical"],
+                note: "Demo plan is free with limited monthly credits."
+            },
+            {
+                name: "GitHub REST API",
+                category: "Developer",
+                url: "https://docs.github.com/en/rest",
+                pricingBucket: "free-tier",
+                pricingLabel: "Free / public data",
+                authBucket: "optional",
+                authLabel: "Optional auth",
+                description: "Repos, commits, issues, users, releases, and more for developer-facing tools.",
+                bestFor: "portfolio stats, repo dashboards, automation helpers",
+                tags: ["repositories", "issues", "commits", "users"],
+                note: "Public data works unauthenticated, but auth gives higher limits."
+            },
+            {
+                name: "JSONPlaceholder",
+                category: "Developer",
+                url: "https://jsonplaceholder.typicode.com/",
+                pricingBucket: "free",
+                pricingLabel: "Free",
+                authBucket: "none",
+                authLabel: "No key",
+                description: "Fake posts, users, comments, albums, photos, and todos for prototypes and demos.",
+                bestFor: "frontend testing, mock apps, demos",
+                tags: ["testing", "fake data", "mock api", "prototype"],
+                note: "Made specifically for prototyping."
+            },
+            {
+                name: "Random User",
+                category: "Utilities",
+                url: "https://randomuser.me/documentation",
+                pricingBucket: "free",
+                pricingLabel: "Free",
+                authBucket: "none",
+                authLabel: "No key",
+                description: "Generate realistic user profiles with names, emails, avatars, locations, and more.",
+                bestFor: "UI mockups, seed data, profile demos",
+                tags: ["users", "seed data", "avatars", "mock"],
+                note: "Open-source and very handy for quick seeded interfaces."
+            },
+            {
+                name: "Open Library",
+                category: "Books + Learning",
+                url: "https://openlibrary.org/developers/api",
+                pricingBucket: "free",
+                pricingLabel: "Free",
+                authBucket: "none",
+                authLabel: "No key",
+                description: "Book search, covers, editions, authors, subjects, and other library-oriented data.",
+                bestFor: "book trackers, reading apps, search tools",
+                tags: ["books", "covers", "authors", "search"],
+                note: "Best used as a low-volume, user-facing lookup API."
+            },
+            {
+                name: "Google Books",
+                category: "Books + Learning",
+                url: "https://developers.google.com/books/docs/v1/using",
+                pricingBucket: "free-tier",
+                pricingLabel: "Free tier",
+                authBucket: "key",
+                authLabel: "API key",
+                description: "Search volume data, preview availability, shelves, and book metadata from Google Books.",
+                bestFor: "book search, reading lookup, ISBN helpers",
+                tags: ["books", "volumes", "isbn", "search"],
+                note: "Public data uses an API key."
+            },
+            {
+                name: "NewsAPI",
+                category: "News",
+                url: "https://newsapi.org/docs",
+                pricingBucket: "dev-free",
+                pricingLabel: "Development free",
+                authBucket: "key",
+                authLabel: "API key",
+                description: "Search articles and pull top headlines across a large news-source catalogue.",
+                bestFor: "headline trackers, article discovery, topic monitoring",
+                tags: ["news", "headlines", "articles", "search"],
+                note: "Free while in development; production use requires a paid plan."
+            },
+            {
+                name: "NASA API",
+                category: "Science",
+                url: "https://api.nasa.gov/",
+                pricingBucket: "free-tier",
+                pricingLabel: "Free tier",
+                authBucket: "key",
+                authLabel: "API key",
+                description: "Space and science endpoints including APOD, Mars, imagery, and Earth observation data.",
+                bestFor: "science pages, educational builds, visual demos",
+                tags: ["space", "imagery", "mars", "education"],
+                note: "A demo key is available for getting started quickly."
+            },
+            {
+                name: "TMDb",
+                category: "Entertainment",
+                url: "https://developer.themoviedb.org/docs/faq",
+                pricingBucket: "free-tier",
+                pricingLabel: "Free non-commercial",
+                authBucket: "key",
+                authLabel: "API key",
+                description: "Movies, TV shows, people, posters, ratings, search, discover, and metadata endpoints.",
+                bestFor: "movie trackers, recommendation tools, media dashboards",
+                tags: ["movies", "tv", "search", "posters"],
+                note: "Free for non-commercial use with attribution."
+            },
+            {
+                name: "TVMaze",
+                category: "Entertainment",
+                url: "https://www.tvmaze.com/api",
+                pricingBucket: "free",
+                pricingLabel: "Free",
+                authBucket: "none",
+                authLabel: "No key",
+                description: "TV schedules, shows, seasons, episodes, people, and images from a clean public REST API.",
+                bestFor: "watchlists, episode guides, TV schedule tools",
+                tags: ["tv", "episodes", "schedule", "shows"],
+                note: "Public API is free and CORS-enabled."
+            },
+            {
+                name: "Jikan",
+                category: "Entertainment",
+                url: "https://docs.api.jikan.moe/",
+                pricingBucket: "free",
+                pricingLabel: "Free",
+                authBucket: "none",
+                authLabel: "No key",
+                description: "Anime and manga metadata through an unofficial but very practical MyAnimeList API.",
+                bestFor: "anime trackers, manga lists, fandom dashboards",
+                tags: ["anime", "manga", "characters", "seasons"],
+                note: "Public API has request rate limits."
+            },
+            {
+                name: "PokeAPI",
+                category: "Entertainment",
+                url: "https://pokeapi.co/docs/v2",
+                pricingBucket: "free",
+                pricingLabel: "Free",
+                authBucket: "none",
+                authLabel: "No key",
+                description: "Pokemon species, moves, types, abilities, games, and evolutions in a very friendly API.",
+                bestFor: "game demos, hobby apps, playful UI builds",
+                tags: ["pokemon", "games", "species", "evolution"],
+                note: "No authentication required."
+            },
+            {
+                name: "Open Trivia DB",
+                category: "Books + Learning",
+                url: "https://opentdb.com/",
+                pricingBucket: "free",
+                pricingLabel: "Free",
+                authBucket: "none",
+                authLabel: "No key",
+                description: "Trivia questions across categories, difficulties, and formats for quizzes and revision games.",
+                bestFor: "quiz apps, revision tools, game prototypes",
+                tags: ["quiz", "trivia", "questions", "learning"],
+                note: "Free to use and easy to query."
+            },
+            {
+                name: "Dog API",
+                category: "Utilities",
+                url: "https://dog.ceo/dog-api/documentation",
+                pricingBucket: "free",
+                pricingLabel: "Free",
+                authBucket: "none",
+                authLabel: "No key",
+                description: "Breed lists and lots of dog images for playful demos, widgets, and side projects.",
+                bestFor: "random image demos, breed browsers, fun widgets",
+                tags: ["dogs", "images", "breeds", "fun"],
+                note: "Stays free and open to access."
+            },
+            {
+                name: "Unsplash",
+                category: "Media",
+                url: "https://unsplash.com/documentation",
+                pricingBucket: "free-tier",
+                pricingLabel: "Free tier",
+                authBucket: "key",
+                authLabel: "API key",
+                description: "High-quality photo search, topics, random images, and photographer metadata.",
+                bestFor: "hero images, creative tools, content pickers",
+                tags: ["photos", "images", "search", "creative"],
+                note: "Demo mode is free and has lower rate limits."
+            },
+            {
+                name: "Pexels",
+                category: "Media",
+                url: "https://www.pexels.com/api/documentation/",
+                pricingBucket: "free-tier",
+                pricingLabel: "Free tier",
+                authBucket: "key",
+                authLabel: "API key",
+                description: "Photos and videos with strong search and curated discovery endpoints.",
+                bestFor: "stock media integration, mock content, design tools",
+                tags: ["photos", "videos", "stock", "search"],
+                note: "Free API key with default hourly and monthly limits."
+            },
+            {
+                name: "Openverse",
+                category: "Media",
+                url: "https://api.openverse.org/v1/",
+                pricingBucket: "free",
+                pricingLabel: "Free",
+                authBucket: "none",
+                authLabel: "No key",
+                description: "Search openly licensed images and audio without building your own media index.",
+                bestFor: "creative search, open-content tools, classroom apps",
+                tags: ["open media", "images", "audio", "creative commons"],
+                note: "Results are openly licensed, but licenses should still be verified."
+            },
+            {
+                name: "TheMealDB",
+                category: "Food",
+                url: "https://www.themealdb.com/docs_api_guide.php",
+                pricingBucket: "dev-free",
+                pricingLabel: "Development free",
+                authBucket: "key",
+                authLabel: "API key",
+                description: "Meals, ingredients, areas, categories, and recipe lookup endpoints with easy browser testing.",
+                bestFor: "recipe apps, food explorers, meal randomizers",
+                tags: ["recipes", "ingredients", "food", "random"],
+                note: "Free test key is great for learning and personal projects."
+            }
+        ];
+
+        const categoryOrder = [
+            "All",
+            "Weather",
+            "Maps + Geo",
+            "Finance",
+            "Developer",
+            "Utilities",
+            "Books + Learning",
+            "News",
+            "Science",
+            "Entertainment",
+            "Media",
+            "Food"
+        ];
+
+        const state = {
+            category: "All",
+            search: "",
+            sort: "name",
+            auth: "all",
+            pricing: "all"
+        };
+
+        const categoryNav = document.getElementById("category-nav");
+        const resourceGrid = document.getElementById("resource-grid");
+        const emptyState = document.getElementById("empty-state");
+        const resultsBadge = document.getElementById("results-badge");
+        const matchCountLabel = document.getElementById("match-count-label");
+        const activeCategoryLabel = document.getElementById("active-category-label");
+        const activeFilterNote = document.getElementById("active-filter-note");
+        const metricTotal = document.getElementById("metric-total");
+        const metricVisible = document.getElementById("metric-visible");
+        const metricNoKey = document.getElementById("metric-nokey");
+        const metricKeyed = document.getElementById("metric-keyed");
+        const searchInput = document.getElementById("search-input");
+        const sortSelect = document.getElementById("sort-select");
+        const authFilter = document.getElementById("auth-filter");
+        const pricingFilter = document.getElementById("pricing-filter");
+        const resetFiltersBtn = document.getElementById("reset-filters-btn");
+        const clearSearchBtn = document.getElementById("clear-search-btn");
+        const clock = document.getElementById("os-clock");
+
+        function createCategoryNav() {
+            categoryOrder.forEach((category) => {
+                const button = document.createElement("button");
+                button.type = "button";
+                button.className = "life-nav-item";
+                button.dataset.category = category;
+                button.textContent = category;
+
+                if (category === state.category) {
+                    button.classList.add("active");
+                }
+
+                button.addEventListener("click", () => {
+                    state.category = category;
+                    updateCategoryNav();
+                    renderCatalog();
+                });
+
+                categoryNav.appendChild(button);
+            });
+        }
+
+        function updateCategoryNav() {
+            categoryNav.querySelectorAll(".life-nav-item").forEach((button) => {
+                button.classList.toggle("active", button.dataset.category === state.category);
+            });
+        }
+
+        function normalize(text) {
+            return String(text || "").toLowerCase();
+        }
+
+        function matchesSearch(item, query) {
+            if (!query) {
+                return true;
+            }
+
+            const haystack = [
+                item.name,
+                item.category,
+                item.description,
+                item.bestFor,
+                item.authLabel,
+                item.pricingLabel,
+                item.note,
+                ...item.tags
+            ].join(" ").toLowerCase();
+
+            return haystack.includes(query);
+        }
+
+        function matchesFilters(item) {
+            const categoryMatch = state.category === "All" || item.category === state.category;
+            const authMatch = state.auth === "all" || item.authBucket === state.auth;
+            const pricingMatch = state.pricing === "all" || item.pricingBucket === state.pricing;
+            const searchMatch = matchesSearch(item, state.search);
+
+            return categoryMatch && authMatch && pricingMatch && searchMatch;
+        }
+
+        function getAuthRank(item) {
+            const ranks = { none: 0, optional: 1, key: 2 };
+            return ranks[item.authBucket] ?? 3;
+        }
+
+        function getPricingRank(item) {
+            const ranks = { free: 0, "free-tier": 1, "dev-free": 2 };
+            return ranks[item.pricingBucket] ?? 3;
+        }
+
+        function sortItems(items) {
+            const sorted = [...items];
+
+            sorted.sort((a, b) => {
+                if (state.sort === "category") {
+                    return a.category.localeCompare(b.category) || a.name.localeCompare(b.name);
+                }
+
+                if (state.sort === "no-key-first") {
+                    return getAuthRank(a) - getAuthRank(b) || a.name.localeCompare(b.name);
+                }
+
+                if (state.sort === "open-first") {
+                    return getPricingRank(a) - getPricingRank(b)
+                        || getAuthRank(a) - getAuthRank(b)
+                        || a.name.localeCompare(b.name);
+                }
+
+                return a.name.localeCompare(b.name);
+            });
+
+            return sorted;
+        }
+
+        function resourceCard(item) {
+            return `
+                <article class="resource-card">
+                    <div class="resource-top">
+                        <div>
+                            <h3 class="resource-title">${item.name}</h3>
+                            <p class="resource-desc">${item.description}</p>
+                        </div>
+                        <span class="badge">${item.category}</span>
+                    </div>
+                    <div class="resource-meta">
+                        <span class="resource-pill ${item.authBucket === "none" ? "good" : ""}">${item.authLabel}</span>
+                        <span class="resource-pill ${item.pricingBucket === "free" ? "good" : item.pricingBucket === "dev-free" ? "highlight" : ""}">${item.pricingLabel}</span>
+                        <span class="resource-pill">Best for ${item.bestFor}</span>
+                    </div>
+                    <div class="resource-tags">
+                        ${item.tags.map((tag) => `<span class="resource-pill">${tag}</span>`).join("")}
+                    </div>
+                    <p class="resource-note">${item.note}</p>
+                    <div class="resource-actions">
+                        <a class="resource-link" href="${item.url}" target="_blank" rel="noreferrer">Open docs <i class="ph ph-arrow-square-out"></i></a>
+                    </div>
+                </article>
+            `;
+        }
+
+        function updateMetrics(visibleItems) {
+            metricTotal.textContent = String(apiCatalog.length).padStart(2, "0");
+            metricVisible.textContent = String(visibleItems.length).padStart(2, "0");
+            metricNoKey.textContent = String(visibleItems.filter((item) => item.authBucket === "none").length).padStart(2, "0");
+            metricKeyed.textContent = String(visibleItems.filter((item) => item.authBucket !== "none").length).padStart(2, "0");
+        }
+
+        function updateLabels(visibleItems) {
+            const categoryText = state.category === "All" ? "All Categories" : state.category;
+            const searchText = state.search ? ` Search: "${state.search}".` : " Search off.";
+            const authText = state.auth === "all" ? " Any auth." : ` Auth: ${state.auth.replace("-", " ")}.`;
+            const pricingText = state.pricing === "all" ? " Any pricing." : ` Pricing: ${state.pricing.replace("-", " ")}.`;
+
+            activeCategoryLabel.textContent = categoryText;
+            matchCountLabel.textContent = `${visibleItems.length} match${visibleItems.length === 1 ? "" : "es"}`;
+            resultsBadge.textContent = `${visibleItems.length} result${visibleItems.length === 1 ? "" : "s"}`;
+            activeFilterNote.textContent = `${categoryText}.${searchText}${authText}${pricingText}`;
+        }
+
+        function renderCatalog() {
+            const filtered = apiCatalog.filter(matchesFilters);
+            const visibleItems = sortItems(filtered);
+
+            updateMetrics(visibleItems);
+            updateLabels(visibleItems);
+
+            resourceGrid.innerHTML = visibleItems.map(resourceCard).join("");
+            emptyState.hidden = visibleItems.length !== 0;
+        }
+
+        function resetFilters() {
+            state.category = "All";
+            state.search = "";
+            state.sort = "name";
+            state.auth = "all";
+            state.pricing = "all";
+
+            searchInput.value = "";
+            sortSelect.value = "name";
+            authFilter.value = "all";
+            pricingFilter.value = "all";
+
+            updateCategoryNav();
+            renderCatalog();
+        }
+
+        searchInput.addEventListener("input", (event) => {
+            state.search = normalize(event.target.value.trim());
+            renderCatalog();
+        });
+
+        sortSelect.addEventListener("change", (event) => {
+            state.sort = event.target.value;
+            renderCatalog();
+        });
+
+        authFilter.addEventListener("change", (event) => {
+            state.auth = event.target.value;
+            renderCatalog();
+        });
+
+        pricingFilter.addEventListener("change", (event) => {
+            state.pricing = event.target.value;
+            renderCatalog();
+        });
+
+        resetFiltersBtn.addEventListener("click", resetFilters);
+
+        clearSearchBtn.addEventListener("click", () => {
+            searchInput.value = "";
+            state.search = "";
+            renderCatalog();
+        });
+
+        function updateClock() {
+            const now = new Date();
+            clock.textContent = now.toLocaleTimeString("en-GB", {
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit"
+            });
+        }
+
+        createCategoryNav();
+        renderCatalog();
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+</html>
